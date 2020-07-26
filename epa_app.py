@@ -61,14 +61,12 @@ else:
     yardline2 
     
 
+ep1 =  df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
+ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
 
 
 if st.button('Calculate Expected Points Added!'):
     
-    #ep1, ep2 = get_expected_points(down1, down2, togo1, togo2, yardline1, yardline2)   
-    ep1 =  df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
-    ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
-
     epa = ep2 - ep1
     st.write('The Previous Expected Points:', round(ep1,2))
     st.write('The Current Expected Points:', round(ep2,2))
