@@ -10,7 +10,7 @@ import pandas as pd
 
 
 #Load data
-#df = pd.read_csv('nfl - cleaned.csv')
+df = pd.read_csv('nfl - cleaned.csv')
 
 st.title('Expected Points Added Calculator Tool')
 
@@ -53,7 +53,7 @@ if side_of_field1 == 'Own':
 if side_of_field2 == 'Own':
     yardline2 = 100 - yardline2
 
-'''
+
 #Get EP for both situations and calculate for EPA
 query1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))]
 ep1 = query1['Expected Points']
@@ -63,7 +63,7 @@ ep2 = query2['Expected Points']
 
 epa = ep2 - ep1
 st.write('The Expected Points Added is:', epa)
-'''
+
 
 st.write('')
 st.write('')
