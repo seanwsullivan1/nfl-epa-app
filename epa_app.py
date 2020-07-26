@@ -117,8 +117,11 @@ def confidence_calculator(safe, gamble_f, gamble_s):
     return(percentage)
 
 conf = confidence_calculator(safe, gamble_f, gamble_s)
-st.write('The confidence calculated is (%):', round(conf*100,2))
-
+   
+try:
+    st.write('The confidence calculated is (%):', round(conf*100,2))
+except TypeError:
+    print('Enter some values to produce a confidence caluclation!')
 
 
 
