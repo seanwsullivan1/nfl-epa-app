@@ -26,7 +26,8 @@ Enter the previous and next play down, yards to go, and yardline to calculate th
 
 
 st.subheader('Expected Points Added Calculator (EPA)')  
-down1 = st.number_input('Enter the previous down:')
+#down1 = st.number_input('Enter the previous down:')
+down1 = st.sidebar.slider('Previous down', 1, 4)
 togo1 = st.number_input('Enter the previous yards to go for first down:')
 yardline1 = st.number_input('Enter the previous yardline:')
 #yardline1 = st.slider('Previous Yardline', 0, 50)
@@ -38,7 +39,8 @@ side_of_field1 = st.selectbox(
 st.write('')
 st.write('')
 
-down2 = st.number_input('Enter the new down:')
+#down2 = st.number_input('Enter the new down:')
+down2 = st.sidebar.slider('Next down', 1, 4)
 togo2 = st.number_input('Enter the new yards to go for first down:')
 yardline2 = st.number_input('Enter the new yardline:')
 #yardline2 = st.slider('New Yardline', 0, 50)
@@ -49,10 +51,15 @@ side_of_field2 = st.selectbox(
 
 if side_of_field1 == 'Own':
     yardline1 = 100 - yardline1
+else:
+    yardline1 = 50 + yardline1
 
 if side_of_field2 == 'Own':
     yardline2 = 100 - yardline2
+else:
+    yardline2 = 50 + yardline1
 
+ep1, ep2 = 0, 0
 
 #Get EP for both situations and calculate for EPA
 #query1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))]
