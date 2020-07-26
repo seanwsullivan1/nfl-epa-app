@@ -62,15 +62,6 @@ else:
     
 
 
-def get_expected_points(down1, down2, togo1, togo2, yardline1, yardline2):
-    '''Takes parameters and queries EP1 for previous and EP2 for next Expected Points'''
-    
-    ep1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
-
-    ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
-    
-    return(ep1,ep2)
-
 
 if st.button('Calculate Expected Points Added!'):
     
