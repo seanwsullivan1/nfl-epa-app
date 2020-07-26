@@ -81,13 +81,14 @@ def get_expected_points(down1=1, down2=2, togo1=10, togo2=5, yardline1=20, yardl
     
     return(ep1,ep2)
 
+if st.button('Test run'):
+    
+    ep1, ep2 = get_expected_points(down1, down2, togo1, togo2, yardline1, yardline2)   
 
-ep1, ep2 = get_expected_points(down1, down2, togo1, togo2, yardline1, yardline2)   
-
-epa = ep2 - ep1
-st.write('The Previous Expected Points:', round(ep1,2))
-st.write('The Current Expected Points:', round(ep2,2))
-st.write('The Expected Points Added is:', round(epa,2))
+    epa = ep2 - ep1
+    st.write('The Previous Expected Points:', round(ep1,2))
+    st.write('The Current Expected Points:', round(ep2,2))
+    st.write('The Expected Points Added is:', round(epa,2))
 
 
 st.write('')
