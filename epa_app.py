@@ -53,20 +53,21 @@ side_of_field2 = st.selectbox(
 if side_of_field1 == 'Opponent':
     yardline1 = 100 - yardline1
 else:
-    yardline1
+    yardline1 = yardline1
 
 if side_of_field2 == 'Opponent':
     yardline2 = 100 - yardline2
 else:
-    yardline2 
+    yardline2 = yardline2
     
 
-ep1 =  df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
-ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
 
 
 if st.button('Calculate Expected Points Added!'):
     
+    ep1 =  df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
+    ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
+
     epa = ep2 - ep1
     st.write('The Previous Expected Points:', round(ep1,2))
     st.write('The Current Expected Points:', round(ep2,2))
@@ -77,6 +78,11 @@ st.write('')
 st.write('')
 st.write('')
 st.write('')
+
+
+
+
+
 
 
 
@@ -111,11 +117,8 @@ def confidence_calculator(safe, gamble_f, gamble_s):
     return(percentage)
 
 conf = confidence_calculator(safe, gamble_f, gamble_s)
-   
-try:
-    st.write('The confidence calculated is (%):', round(conf*100,2))
-except TypeError:
-    print('Enter some values to produce a confidence caluclation!')
+st.write('The confidence calculated is (%):', round(conf*100,2))
+
 
 
 
