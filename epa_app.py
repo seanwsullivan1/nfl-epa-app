@@ -49,24 +49,7 @@ side_of_field2 = st.selectbox(
         ('Own', 'Opponent')
 )
 
-'''
-def get_yardline_fix(yardline1, yardline2, side_of_field1, side_of_field2):
-    'Asks for yardline, but fixes for excel extraction'
-    
-    if side_of_field1 == 'Opponent':
-        yardline1 = 100 - yardline1
-    else:
-        yardline1
 
-    if side_of_field2 == 'Opponent':
-        yardline2 = 100 - yardline2
-    else:
-        yardline2 
-        
-    return(yardline1, yardline2)
-
-yardline1, yardline2 = get_yardline_fix(yardline1,yardline2, side_of_field1, side_of_field2) 
-'''
 if side_of_field1 == 'Opponent':
     yardline1 = 100 - yardline1
 else:
