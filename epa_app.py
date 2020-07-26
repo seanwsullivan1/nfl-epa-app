@@ -55,13 +55,19 @@ if side_of_field2 == 'Own':
 
 
 #Get EP for both situations and calculate for EPA
-query1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))]
-ep1 = float(query1['Expected Points'])
+#query1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))]
+ep1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
+#ep1 = query1['Expected Points'].astype(float)
 
-query2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))]
-ep2 = float(query2['Expected Points'])
+
+#query2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))]
+#ep2 = query2['Expected Points'].astype(float)
+ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
+
 
 epa = ep2 - ep1
+st.write('The Previous Expected Points:', round(ep1,2))
+st.write('The Current Expected Points:', round(ep2,2))
 st.write('The Expected Points Added is:', round(epa,2))
 
 
