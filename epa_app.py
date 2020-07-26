@@ -12,6 +12,8 @@ import pandas as pd
 #Load data
 df = pd.read_csv('nfl - cleaned.csv')
 
+
+#Streamlit formatting 
 st.title('Expected Points Added Calculator Tool')
 
 
@@ -25,8 +27,8 @@ Enter the previous and next play down, yards to go, and yardline to calculate th
 """)
 
 
+#EPA Calculator
 st.subheader('Expected Points Added Calculator (EPA)')  
-#down1 = st.number_input('Enter the previous down:')
 down1 = st.slider('Previous down', 1, 4)
 togo1 = st.number_input('Enter the previous yards to go for first down:')
 yardline1 = st.number_input('Enter the previous yardline:')
@@ -39,17 +41,18 @@ side_of_field1 = st.selectbox(
 st.write('')
 st.write('')
 
-#down2 = st.number_input('Enter the new down:')
+
 down2 = st.slider('Next down', 1, 4)
 togo2 = st.number_input('Enter the new yards to go for first down:')
 yardline2 = st.number_input('Enter the new yardline:')
-#yardline2 = st.slider('New Yardline', 0, 50)
+
 side_of_field2 = st.selectbox(
         'New side of the field', 
         ('Own', 'Opponent')
 )
 
 
+#fixing yardline to be properly queried from CSV file
 if side_of_field1 == 'Opponent':
     yardline1 = 100 - yardline1
 else:
@@ -60,7 +63,6 @@ if side_of_field2 == 'Opponent':
 else:
     yardline2 = yardline2
     
-
 
 
 if st.button('Calculate Expected Points Added!'):
@@ -94,8 +96,6 @@ safe = st.number_input('Expected Points for safe option:')
 gamble_f = st.number_input('Expected Points for most likely failed outcome:')
 gamble_s = st.number_input('Expected Points for minimum successful outcome:')
 
-safe, gamble_f, gamble_s = safe, gamble_f, gamble_s
-#safe, gamble_f, gamble_s = -0.3, -1.5, 2.7
 
 def confidence_calculator(safe, gamble_f, gamble_s):
     '''Takes safe bet, gamble failed outcome, gamble success outcome
