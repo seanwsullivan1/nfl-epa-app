@@ -27,7 +27,7 @@ Enter the previous and next play down, yards to go, and yardline to calculate th
 
 st.subheader('Expected Points Added Calculator (EPA)')  
 #down1 = st.number_input('Enter the previous down:')
-down1 = st.sidebar.slider('Previous down', 1, 4)
+down1 = st.slider('Previous down', 1, 4)
 togo1 = st.number_input('Enter the previous yards to go for first down:')
 yardline1 = st.number_input('Enter the previous yardline:')
 #yardline1 = st.slider('Previous Yardline', 0, 50)
@@ -40,7 +40,7 @@ st.write('')
 st.write('')
 
 #down2 = st.number_input('Enter the new down:')
-down2 = st.sidebar.slider('Next down', 1, 4)
+down2 = st.slider('Next down', 1, 4)
 togo2 = st.number_input('Enter the new yards to go for first down:')
 yardline2 = st.number_input('Enter the new yardline:')
 #yardline2 = st.slider('New Yardline', 0, 50)
@@ -59,18 +59,30 @@ if side_of_field2 == 'Own':
 else:
     yardline2 = 50 + yardline1
 
-ep1, ep2 = 0, 0
+#ep1, ep2 = 0, 0
 
 #Get EP for both situations and calculate for EPA
 #query1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))]
-ep1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
+#ep1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
 #ep1 = query1['Expected Points'].astype(float)
 
 
 #query2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))]
 #ep2 = query2['Expected Points'].astype(float)
-ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
+#ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
 
+
+def get_expected_points(down1=1, down2=2, togo1=10, togo2=5, yardline1=20, yardline2=25):
+    '''Explain'''
+    
+    ep1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
+
+    ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
+    
+    return(ep1,ep2)
+
+
+ep1, ep2 = get_expected_points(down1, down2, togo1, togo2, yardline1, yardline2)   
 
 epa = ep2 - ep1
 st.write('The Previous Expected Points:', round(ep1,2))
