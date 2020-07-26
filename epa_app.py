@@ -49,31 +49,28 @@ side_of_field2 = st.selectbox(
         ('Own', 'Opponent')
 )
 
-if side_of_field1 == 'Own':
-    yardline1 = 100 - yardline1
-else:
-    yardline1 = 50 + yardline1
 
-if side_of_field2 == 'Own':
-    yardline2 = 100 - yardline2
-else:
-    yardline2 = 50 + yardline1
+def get_yardline_fix(yardline1, yardline2, side_of_field1, side_of_field2):
+    'Asks for yardline, but fixes for excel extraction'
+    
+    if side_of_field1 == 'Opponent':
+        yardline1 = 100 - yardline1
+    else:
+        yardline1
 
-#ep1, ep2 = 0, 0
+    if side_of_field2 == 'Opponent':
+        yardline2 = 100 - yardline2
+    else:
+        yardline2 
+        
+    return(yardline1, yardline2)
 
-#Get EP for both situations and calculate for EPA
-#query1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))]
-#ep1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
-#ep1 = query1['Expected Points'].astype(float)
-
-
-#query2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))]
-#ep2 = query2['Expected Points'].astype(float)
-#ep2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))].values[0][3]
+yardline1, yardline2 = get_yardline_fix(yardline1,yardline2, side_of_field1, side_of_field2) 
 
 
-def get_expected_points(down1=1, down2=2, togo1=10, togo2=5, yardline1=20, yardline2=25):
-    '''Explain'''
+
+def get_expected_points(down1, down2, togo1, togo2, yardline1, yardline2):
+    '''Takes parameters and queries EP1 for previous and EP2 for next Expected Points'''
     
     ep1 = df.loc[((df['Down'] == down1) & (df['ToGo'] == togo1) & (df['YardLine'] == yardline1))].values[0][3]
 
@@ -81,7 +78,7 @@ def get_expected_points(down1=1, down2=2, togo1=10, togo2=5, yardline1=20, yardl
     
     return(ep1,ep2)
 
-if st.button('Test run'):
+if st.button('Calculate Expected Points Added!'):
     
     ep1, ep2 = get_expected_points(down1, down2, togo1, togo2, yardline1, yardline2)   
 
