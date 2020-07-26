@@ -61,7 +61,7 @@ ep1 = query1['Expected Points']
 query2 = df.loc[((df['Down'] == down2) & (df['ToGo'] == togo2) & (df['YardLine'] == yardline2))]
 ep2 = query2['Expected Points']
 
-epa = ep2 - ep1
+epa = float(ep2) - float(ep1)
 st.write('The Expected Points Added is:', epa)
 
 
