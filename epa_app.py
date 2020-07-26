@@ -99,7 +99,8 @@ safe = st.number_input('Expected Points for safe option:')
 gamble_f = st.number_input('Expected Points for most likely failed outcome:')
 gamble_s = st.number_input('Expected Points for minimum successful outcome:')
 
-safe, gamble_f, gamble_s = float(safe), float(gamble_f), float(gamble_s)
+safe, gamble_f, gamble_s = safe, gamble_f, gamble_s
+#safe, gamble_f, gamble_s = -0.3, -1.5, 2.7
 
 def confidence_calculator(safe, gamble_f, gamble_s):
     '''Takes safe bet, gamble failed outcome, gamble success outcome
